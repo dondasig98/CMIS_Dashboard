@@ -3,24 +3,14 @@
 // ------------PATIENTS PER DIVISION CHART------------------ //
 
 var xValues = ["Cardiology", "Telemetry", "Oncology", "Emergency", "Orthopedic", "Others"];
-var yValues = [12, 19, 3, 5, 2, 3];
+var yValues = [12, 19, 3, 5, 7, 3];
 var barColors = [
-    'rgba(255, 99, 132, 0.2)',
-    'rgba(255, 159, 64, 0.2)',
-    'rgba(255, 205, 86, 0.2)',
-    'rgba(75, 192, 192, 0.2)',
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(153, 102, 255, 0.2)',
-    'rgba(201, 203, 207, 0.2)'
-];
-var borderColors = [
-    'rgb(255, 99, 132)',
-    'rgb(255, 159, 64)',
-    'rgb(255, 205, 86)',
-    'rgb(75, 192, 192)',
-    'rgb(54, 162, 235)',
-    'rgb(153, 102, 255)',
-    'rgb(201, 203, 207)'
+    'rgba(62, 158, 164, 1)',
+    'rgba(62, 164, 120, 1)',
+    'rgba(62, 158, 164, 1)',
+    'rgba(62, 164, 120, 1)',
+    'rgba(62, 158, 164, 1)',
+    'rgba(62, 164, 120, 1)'
 ];
 
 new Chart("barChart", {
@@ -29,18 +19,18 @@ new Chart("barChart", {
         labels: xValues,
         datasets: [{
             backgroundColor: barColors,
-            borderColor: borderColors,
             borderWidth: 1,
-            data: yValues
+            data: yValues,
         }]
     },
     options: {
-        legend: { display: false },
+        legend: {
+            display: false,
+        },
         title: {
             display: true,
-            text: "Number of patients per division"
-        },
-        beginAtZero: true
+            text: "Patients per Division"
+        }
     }
 });
 
@@ -49,12 +39,12 @@ new Chart("barChart", {
 var xValue = ["Discharged", "Admits"];
 var yValue = [20, 80];
 var barColor = [
-    'rgba(255, 99, 132, 0.2)',
-    'rgba(255, 159, 64, 0.2)'
+    'rgba(62, 158, 164, 1)',
+    'rgba(62, 164, 120, 1)'
 ];
 
 new Chart("pieChart", {
-    type: "doughnut",
+    type: "pie",
     data: {
         labels: xValue,
         datasets: [{
@@ -73,72 +63,75 @@ new Chart("pieChart", {
 });
 
 // ---------------------COVID PATIENTS CHART------------------ //
+var xValue = ["Deaths", "Recoveries", "Active Cases", "New Cases"];
+var yValue = [5, 5, 5, 5];
+var barColor = [
+    'rgba(62, 158, 164, 1)',
+    'rgba(62, 164, 120, 1)',
+    'rgba(62, 164, 91, 1)',
+    'rgba(62, 106, 164, 1)'
+];
 
-const doughnut = document.getElementById('doughnutChart').getContext('2d');
-const myChart4 = new Chart(doughnut, {
-    type: 'doughnut',
+new Chart("doughnutChart", {
+    type: "doughnut",
     data: {
-        labels: ['Deaths', 'Recoveries', 'Active Cases', 'New Cases'],
+        labels: xValue,
         datasets: [{
-            data: [5, 5, 5, 5],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
-        }]
+            backgroundColor: barColor,
+            data: yValue
+        }],
+        borderWidth: 1
+
     },
     options: {
         title: {
             display: true,
-            text: "Total Number of Covid Patients"
-        },
-        
+            text: "Covid Patients"
+        }
     }
 });
 
+
 // ---------------------COVID NON COVID PATIENTS CHART------------------ //
 
-const line = document.getElementById('lineChart').getContext('2d');
-const myChart3 = new Chart(line, {
-    type: 'line',
+var xValues = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+var yValues1 = [25, 20, 60, 51, 66, 45, 50, 11, 2, 32, 65, 10];
+var yValues2 = [5, 25, 15, 41, 35, 65, 80, 20, 23, 54, 50, 60];
+var barColors1 = ['rgba(2, 158, 164, 0.3)'];
+var barColors2 = ['rgba(62, 164, 120, 0.3)'];
+var borderColors1 = ['rgba(2, 158, 164, 1)'];
+var borderColors2 = ['rgba(62, 164, 120, 1)'];
+
+new Chart("lineChart", {
+    type: "line",
     data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: xValues,
         datasets: [{
             label: "Patients w/ COVID",
-            data: [25, 20, 60, 41, 66, 45, 80, 11, 2, 32, 60, 10],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)'
-            ],
-            borderWidth: 1
+            backgroundColor: barColors1,
+            borderColor: borderColors1,
+            borderWidth: 2,
+            data: yValues1,
+            fill: false
         }, {
-            label: "Patients w/o COVID",
-            data: [5, 20, 15, 41, 35, 65, 80, 20, 23, 54, 50, 60],
-            backgroundColor: [
-                'rgba(54, 162, 235, 0.2)',
-            ],
-            borderColor: [
-                'rgba(54, 162, 235, 1)',
-            ],
-            borderWidth: 1
+            label: "Patients w/ Non-COVID",
+            backgroundColor: barColors2,
+            borderColor: borderColors2,
+            borderWidth: 2,
+            data: yValues2,
+            fill: false
         }]
     },
     options: {
-        legend: false,
+        legend: {
+            display: true,
+        },
+        tooltips: {
+            enabled: true,
+        },
         title: {
             display: true,
-            text: "Covid and Non Covid Patients"
-        },
+            text: "COVID and Non-COVID Patients"
+        }
     }
 });
