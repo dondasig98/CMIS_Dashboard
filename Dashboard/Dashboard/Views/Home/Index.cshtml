@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!---SIDE BAR--->
+
+<div class="sidebar" id="sidebar">
+    <a class="active" href="#home">Dashboard</a>
+    <a asp-area="" asp-page="/Utilities">Utilities</a>
+</div>
+
+
+<!---CONTENT--->
+
+<div class="content">
+
+    <!---FIRST ROW CARDS--->
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-content">
+                <div class="number">45</div>
+                <div class="card-name">Total no. of beds</div>
+                <div class="icon-box">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="number">15</div>
+                <div class="card-name">ICU Beds</div>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="number">10</div>
+                <div class="card-name">Isolation Beds</div>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="number">20</div>
+                <div class="card-name">Ward Beds</div>
+            </div>
+            <div class="icon-box">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+        </div>
+    </div>
+
+    <!---SECOND ROW CHARTS--->
+
+    <div class="charts">
+        <div class="card" id="card-chart1">
+            <canvas id="barChart"></canvas>
+        </div>
+        <div class="card" id="card-chart2">
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
+
+    <!----THIRD ROW CHARTS--->
+
+    <div class="charts">
+        <div class="card" id="card-chart3">
+            <canvas id="doughnutChart"></canvas>
+        </div>
+        <div class="card" id="card-chart4">
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>
+
+</div>
